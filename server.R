@@ -322,7 +322,8 @@ function(input, output, session) {
     
     plot_limits <- category_spend_progress |>
       pivot_longer(cols = c(spend_month, goal_target)) |> pull(value) |> {\(x) c(min(x),max(x))}()
-    label_bump <- 30
+    plot_limits[1] <- ifelse(plot_limits[1]>=0,0,plot_limits[1])
+    label_bump <- plot_limits[2]/25
     
     # re printing ggplot
     # https://stackoverflow.com/questions/58448118/warning-jsonlite-in-shiny-input-to-asjsonkeep-vec-names-true-is-a-named-vecto
@@ -366,7 +367,7 @@ function(input, output, session) {
             scale_x_discrete(name = NULL) +
             scale_y_continuous(name = NULL,
                                labels=scales::dollar_format(),
-                               limits = c(plot_limits[1]-label_bump*1.5, plot_limits[2]+label_bump*2.5)) +
+                               limits = c(plot_limits[1]*1.125-label_bump, plot_limits[2]*1.1)) +
             scale_fill_manual(values =  c("#e6a57a", "#7abbe6"), guide = "none") +
             scale_color_manual(values = c("#e6a57a", "#7abbe6"), guide = "none") +
             theme_minimal() +

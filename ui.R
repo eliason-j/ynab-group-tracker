@@ -12,7 +12,7 @@ ui <-
     } else {
       shinyUI(
         fluidPage(
-          titlePanel("YNAB spending tracker for groups of budget categories"),
+          titlePanel("YNAB Grouped Budget Tracker"),
           tags$head(tags$style(
             type="text/css",
             "#image img {max-width: 100%; width: auto; height: auto}",
