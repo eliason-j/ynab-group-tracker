@@ -1,4 +1,4 @@
-# ynab-group-tracker
+# YNAB Group Tracker
 
 ## Introduction
 
